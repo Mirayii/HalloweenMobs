@@ -56,22 +56,21 @@ public class Damage implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        NamespacedKey key = new NamespacedKey(main, "mobType");
         Entity entity = event.getEntity();
         Location loc = entity.getLocation();
         World world = entity.getWorld();
         EntityType type = entity.getType();
 
-        if(type == EntityType.ZOMBIE) {
-            if(entity.getScoreboardTags().contains("Ghost")) {
+            if(Objects.equals(entity.getPersistentDataContainer().get(key, PersistentDataType.STRING), "Ghost")) {
                 world.playSound(loc, Sound.ENTITY_ELDER_GUARDIAN_DEATH, 1, 0);
-            }
-        }
+        } else
 
         if(type == EntityType.SKELETON) {
-            if(entity.getScoreboardTags().contains("Reaper")) {
+            if(Objects.equals(entity.getPersistentDataContainer().get(key, PersistentDataType.STRING), "Reaper")) {
                 world.playSound(loc, Sound.ENTITY_WITHER_SKELETON_DEATH, 1, 0);
             }
-            if(entity.getScoreboardTags().contains("Horseman")) {
+            if(Objects.equals(entity.getPersistentDataContainer().get(key, PersistentDataType.STRING), "Horseman")) {
                 world.playSound(loc, Sound.ENTITY_SKELETON_DEATH, 1, 0);
             }
         }

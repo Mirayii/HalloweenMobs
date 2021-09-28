@@ -64,16 +64,14 @@ public class Damage implements Listener {
 
             if(Objects.equals(entity.getPersistentDataContainer().get(key, PersistentDataType.STRING), "Ghost")) {
                 world.playSound(loc, Sound.ENTITY_ELDER_GUARDIAN_DEATH, 1, 0);
-        } else
+            }
 
-        if(type == EntityType.SKELETON) {
             if(Objects.equals(entity.getPersistentDataContainer().get(key, PersistentDataType.STRING), "Reaper")) {
                 world.playSound(loc, Sound.ENTITY_WITHER_SKELETON_DEATH, 1, 0);
             }
             if(Objects.equals(entity.getPersistentDataContainer().get(key, PersistentDataType.STRING), "Horseman")) {
                 world.playSound(loc, Sound.ENTITY_SKELETON_DEATH, 1, 0);
             }
-        }
     }
 
 

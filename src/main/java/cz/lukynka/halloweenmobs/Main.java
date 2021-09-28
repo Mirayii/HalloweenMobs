@@ -18,7 +18,6 @@ public final class Main extends JavaPlugin {
 
     public final String pluginVer = this.getDescription().getVersion();
     public final String system = Bukkit.getServer().getName();
-    public final String author = "LukynkaCZE";
     public final String prefix = chat.translated("&8[&6Halloween Mobs&8] ");
 
     @Override
@@ -56,25 +55,17 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        chat.sendToConsole("&r ");
-        chat.sendToConsole(prefix +"&7See you next time!");
-        chat.sendToConsole("&r ");
     }
 
 
-
-
-    private File configf;
-    private FileConfiguration config;
-
     private void createFiles() {
-        configf = new File(getDataFolder(), "config.yml");
+        File configf = new File(getDataFolder(), "config.yml");
 
         if(!(configf.exists())) {
             configf.getParentFile().mkdir();
             saveResource("config.yml", false);
         }
-        config = new YamlConfiguration();
+        FileConfiguration config = new YamlConfiguration();
         try {
             config.load(configf);
         } catch (IOException | InvalidConfigurationException e) {
